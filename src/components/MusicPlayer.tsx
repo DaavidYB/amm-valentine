@@ -22,7 +22,7 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
   const [songs, setSongs] = React.useState<Song[]>([])
   const [currentSong, setCurrentSong] = React.useState<Song | null>(null)
   const audioRef = React.useRef<HTMLAudioElement | null>(null)  // Reference to the audio element
-  const progressInterval = React.useRef<NodeJS.Timeout>()
+  const progressInterval = React.useRef<ReturnType<typeof setInterval> | null>(null)
 
   // Charger la playlist au début
   React.useEffect(() => {
@@ -86,7 +86,10 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
           const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100
           if (progress >= 100) {
             setIsPlaying(false)
-            clearInterval(progressInterval.current)
+            if (progressInterval.current !== null) {
+              clearInterval(progressInterval.current)
+            }
+            // clearInterval(progressInterval.current)
           }
         }
       }, 100)
