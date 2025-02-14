@@ -6,12 +6,15 @@ require("dotenv").config();
 const app = express();
 connectDB();
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.VERCEL_ENV === 'production'
+      ? process.env.VERCEL_URL
+      : 'http://localhost:5001'
+}));
 app.use(express.json());
 
 app.use("/api", require("./routes/matchRoutes"));
 app.use("/api", require("./routes/playlist"));
 app.use("/api", require("./routes/message"));
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`🚀 Serveur démarré sur le port ${PORT}`));
+module.exports = app;

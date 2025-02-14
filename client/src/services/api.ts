@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VERCEL_URL;
 
 export const submitQuiz = async (name: string, answers: number[]): Promise<{ userId: string }> => {
     const response = await fetch(`${API_URL}/api/submit`, {
