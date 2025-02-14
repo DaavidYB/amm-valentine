@@ -19,7 +19,6 @@ interface MusicPlayerProps {
 
 export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
   const [isPlaying, setIsPlaying] = React.useState(true)  // Start with playing
-  const [progress, setProgress] = React.useState(0)
   const [songs, setSongs] = React.useState<Song[]>([])
   const [currentSong, setCurrentSong] = React.useState<Song | null>(null)
   const audioRef = React.useRef<HTMLAudioElement | null>(null)  // Reference to the audio element
@@ -85,10 +84,8 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
       progressInterval.current = setInterval(() => {
         if (audioRef.current) {
           const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100
-          setProgress(progress)
           if (progress >= 100) {
             setIsPlaying(false)
-            setProgress(0)
             clearInterval(progressInterval.current)
           }
         }

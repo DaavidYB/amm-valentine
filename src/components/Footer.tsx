@@ -1,13 +1,6 @@
 import MusicPlayer from './MusicPlayer';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const song = {
-    id: "1",
-    title: "Song Title",
-    artist: "Artist Name",
-    audioUrl: "./assets/song.mp3"
-};
-
 function Footer() {
     const location = useLocation();
     const navigate = useNavigate();

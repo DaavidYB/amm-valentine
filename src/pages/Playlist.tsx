@@ -39,6 +39,7 @@ export default function Playlist() {
           localStorage.setItem("playlistUserId", storedUserId);
         } else {
           console.error("Erreur: L'ID utilisateur est undefined !");
+          return;
         }
       }
       
@@ -98,6 +99,11 @@ export default function Playlist() {
   
 
   const handleAddSong = async (song: any) => {
+    if (!playlistUserId) {
+      console.error("Utilisateur non trouvé !");
+      return;
+    }
+
     const { title, artist, url } = song
     const response = await addSong(title, artist, url, playlistUserId, mode)
 

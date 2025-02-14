@@ -12,14 +12,12 @@ function Match() {
     const [name, setName] = useState("");
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState<number[]>([]);
-    const [userId, setUserId] = useState<string | null>(null);
     const [matchResult, setMatchResult] = useState<{ name: string; compatibility: string } | null>(null);
 
     // 🔹 Vérifie si l'utilisateur a déjà joué
     useEffect(() => {
         const storedUserId = localStorage.getItem("miage_match_user");
         if (storedUserId) {
-            setUserId(storedUserId);
             fetchMatch(storedUserId, mode); // Mode dépendant du choix de l'utilisateur
             setStep("result");
         }
@@ -40,7 +38,6 @@ function Match() {
             submitQuiz(name, newAnswers).then((response) => {
                 if (response.userId) {
                     localStorage.setItem("miage_match_user", response.userId);
-                    setUserId(response.userId);
                     fetchMatch(response.userId, mode);
                 }
             });
