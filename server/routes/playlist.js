@@ -16,11 +16,16 @@ const axios = require("axios");
 // });
 router.get("/playlist/:mode", async (req, res) => {
     try {
+      console.log('Reçu requête playlist avec params:', req.params);
+      console.log('Query params:', req.query);
+
       const { mode } = req.params;
-      const { userId } = req.query; // On récupère l'ID utilisateur
-  
+      const { userId } = req.query;
+
+      console.log('Recherche playlist pour mode:', mode);
       const playlist = await Playlist.findOne({ mode }) || new Playlist({ mode, songs: [] });
-  
+      console.log('Playlist trouvée:', !!playlist);
+
       // Ajouter `isLiked` et trier les chansons
       const sortedSongs = playlist.songs
         .map(song => ({
