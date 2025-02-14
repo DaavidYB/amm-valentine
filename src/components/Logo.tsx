@@ -4,7 +4,7 @@ interface LogoProps {
 
 function Logo({ onClick }: LogoProps) {
     return (
-        <img className="w-[56px] cursor-pointer" src="../../public/logo.svg" alt="Logo" onClick={onClick} />
+        <img className="w-[56px] cursor-pointer" src="../src/assets/logo.svg" alt="Logo" onClick={onClick} />
     );
 }
 
