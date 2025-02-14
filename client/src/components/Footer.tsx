@@ -10,7 +10,7 @@ function Footer() {
         <footer className="flex justify-between items-center align-center w-screen px-6 py-6 z-50">
             {currentPath === '/' && (
                 <>
-                    <MusicPlayer mode="love" userId={""} />
+                    <MusicPlayer mode="love" userId={"123"} />
                     <div className="relative">
                         <img src="../src/assets/dessin_musique.svg" alt="Musique" className="w-24 h-auto" />
                         <div 
@@ -23,7 +23,7 @@ function Footer() {
             )}
             {currentPath === '/match' && (
                 <>
-                    <MusicPlayer mode="love" userId={""} />
+                    <MusicPlayer mode="love" userId={"123"} />
                     <div className="text-xl font-bold">MATCH</div>
                 </>
             )}
@@ -32,13 +32,13 @@ function Footer() {
             )}
             {currentPath === '/secret-valentine' && (
                 <>
-                    <MusicPlayer mode="love" userId={""} />
+                    <MusicPlayer mode="love" userId={"123"} />
                     <div className="text-xl font-bold text-right">SECRET VALENTINE</div>
                 </>
             )}
             {currentPath === '/iloveu' && (
                 <>
-                    <MusicPlayer mode="love" userId={""} />
+                    <MusicPlayer mode="love" userId={"123"} />
                     <div className="text-xl font-bold text-right">I LOVE U</div>
                 </>
             )}
