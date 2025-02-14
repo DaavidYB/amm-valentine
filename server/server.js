@@ -3,18 +3,21 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 require("dotenv").config();
 
-console.log('Démarrage du serveur...');
-
 const app = express();
 
 // Middleware pour logger toutes les requêtes
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
     console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
-    next();
+    
+    // Connexion à MongoDB pour chaque requête
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error('Erreur de connexion MongoDB:', error);
+        res.status(500).json({ error: 'Database connection failed' });
+    }
 });
-
-// Connexion à MongoDB
-const dbConnected = await connectDB();
 
 app.use(cors({
     origin: process.env.VERCEL_ENV === 'production'
