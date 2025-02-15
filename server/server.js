@@ -19,11 +19,7 @@ app.use(async (req, res, next) => {
     }
 });
 
-app.use(cors({
-    origin: process.env.VERCEL_ENV === 'production'
-      ? process.env.VERCEL_URL
-      : 'http://localhost:5001'
-}));
+app.use(cors());
 app.use(express.json());
 
 app.use("/api", require("./routes/matchRoutes"));
@@ -40,4 +36,10 @@ app.use((err, req, res, next) => {
     });
 });
 
+// Export pour Vercel
 module.exports = app;
+
+// Export pour les fonctions serverless
+module.exports.handler = async (req, res) => {
+    await app(req, res);
+};
