@@ -18,10 +18,11 @@ interface MusicPlayerProps {
 }
 
 export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
-  const [isPlaying, setIsPlaying] = React.useState(true)  // Start paused
+  const [isPlaying, setIsPlaying] = React.useState(false)
   const [songs, setSongs] = React.useState<Song[]>([])
   const [currentSong, setCurrentSong] = React.useState<Song | null>(null)
-  const audioRef = React.useRef<HTMLAudioElement | null>(null)  // Reference to the audio element
+  const [volume] = React.useState(0.1) // Volume à 10%
+  const audioRef = React.useRef<HTMLAudioElement | null>(null)
   const progressInterval = React.useRef<ReturnType<typeof setInterval> | null>(null)
 
   // Charger la playlist au début
@@ -55,6 +56,7 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
       if (isPlaying) {
         audioRef.current.pause()
       } else {
+        audioRef.current.volume = volume // S'assurer que le volume est appliqué
         audioRef.current.play()
       }
       setIsPlaying(!isPlaying)
@@ -71,8 +73,9 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
       }
       
       audioRef.current = new Audio(currentSong.url);
-      audioRef.current.volume = 0.2; // Reduced volume to 20%
+      audioRef.current.volume = volume; // Appliquer le volume depuis l'état
       audioRef.current.addEventListener("ended", handleSongEnd);
+      // console.log('Volume set to:', volume); // Pour débugger
 
       // Only play if isPlaying is true
       if (isPlaying) {
