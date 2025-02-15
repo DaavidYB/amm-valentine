@@ -93,20 +93,27 @@ function Match() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="w-full"
+                            className="w-full px-2 sm:px-4"
                         >
-                            <div className="text-center mb-4">
-                                <h2 className="text-2xl font-bold text-[var(--color-accent)] mb-1">{questions[currentQuestion].text}</h2>
-                                <p className="text-sm text-[var(--color-accent)]/60">
+                            <div className="text-center mb-2 sm:mb-4">
+                                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--color-accent)] mb-1">
+                                    {questions[currentQuestion].text}
+                                </h2>
+                                <p className="text-xs sm:text-sm text-[var(--color-accent)]/60">
                                     {currentQuestion + 1}/{questions.length}
                                 </p>
                             </div>
-                            <div className="space-y-3 flex flex-col items-center">
+                            <div className="space-y-2 sm:space-y-3 flex flex-col items-center">
                                 {questions[currentQuestion].options.map((option, index) => (
                                     <button
                                         key={option}
                                         onClick={() => handleAnswer(index)}
-                                        className="w-full sm:w-[70%] md:w-[80%] h-17 p-4 rounded-2xl bg-[var(--color-primary)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white font-bold transition-colors duration-200"
+                                        className="w-[95%] sm:w-[85%] p-2 sm:p-3 md:p-4 
+                                            rounded-xl sm:rounded-2xl 
+                                            bg-[var(--color-primary)] text-[var(--color-accent)]
+                                            hover:bg-[var(--color-accent)] hover:text-white 
+                                            text-sm sm:text-base font-bold 
+                                            transition-colors duration-200"
                                     >
                                         {option}
                                     </button>
@@ -121,11 +128,17 @@ function Match() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="text-center"
+                            className="text-center px-2 sm:px-4"
                         >
-                            <h2 className="text-2xl font-bold text-[var(--color-accent)] mb-4">Ton match est</h2>
-                            <div className="text-4xl font-bold text-[var(--color-accent)] mb-2">{matchResult.name}</div>
-                            <p className="text-md text-[var(--color-accent)]/70">Compatibilité : {matchResult.compatibility}</p>
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--color-accent)] mb-2 sm:mb-4">
+                                Ton match est
+                            </h2>
+                            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--color-accent)] mb-2">
+                                {matchResult.name}
+                            </div>
+                            <p className="text-sm sm:text-base text-[var(--color-accent)]/70">
+                                Compatibilité : {matchResult.compatibility}
+                            </p>
                         </motion.div>
                     )}
                 </AnimatePresence>
