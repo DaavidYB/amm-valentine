@@ -91,6 +91,7 @@ export default function ILoveU() {
       <div className="w-full h-full flex items-center justify-center p-2 sm:p-4">
         <div className="backdrop-blur-sm rounded-2xl sm:rounded-3xl 
             p-3 sm:p-6
+            w-[min(90vw,500px)] max-h-[90vh]
             flex flex-col items-center justify-center
             overflow-y-auto">
             {/* Game Content */}
@@ -123,39 +124,39 @@ export default function ILoveU() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-lg"
+                    className="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6"
                 >
-                    <h2 className="text-xl font-semibold text-[var(--color-accent)] font-bold mb-4">Indice {currentQuestion + 1}</h2>
-                    <p className="text-[var(--color-accent)] font-regular mb-6" dangerouslySetInnerHTML={{ __html: questions[currentQuestion].text }} />
+                    <h2 className="text-sm sm:text-base font-semibold text-[var(--color-accent)] font-bold mb-2 sm:mb-3">Indice {currentQuestion + 1}</h2>
+                    <p className="text-[var(--color-accent)] font-regular mb-3 sm:mb-4" dangerouslySetInnerHTML={{ __html: questions[currentQuestion].text }} />
 
                     {questions[currentQuestion].type === "multiple" ? (
-                    <div className="space-y-2">
+                    <div className="space-y-2 sm:space-y-3">
                         {questions[currentQuestion].options?.map((option, index) => (
                         <Button
                             key={index}
                             onClick={() => handleAnswer(option)}
-                            className="w-full bg-[var(--color-primary)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white"
+                            className="w-full bg-[var(--color-primary)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white text-xs sm:text-sm"
                         >
                             {option}
                         </Button>
                         ))}
                     </div>
                     ) : (
-                    <div className="space-y-2">
+                    <div className="space-y-2 sm:space-y-3">
                         <Input
                         type="text"
                         value={textAnswer}
                         onChange={(e) => setTextAnswer(e.target.value)}
                         placeholder="Votre réponse..."
-                        className="bg-[var(--color-primary)] w-full border-none text-[var(--color-accent)] placeholder:text-[var(--color-accent)]/50"
+                        className="bg-[var(--color-primary)] w-full border-none text-[var(--color-accent)] placeholder:text-[var(--color-accent)]/50 text-xs sm:text-sm"
                         />
-                        <Button onClick={handleTextSubmit} className="w-full bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent)]/90">
+                        <Button onClick={handleTextSubmit} className="w-full bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent)]/90 text-xs sm:text-sm">
                         Je tente ^^
                         </Button>
                     </div>
                     )}
 
-                    {isWrongAnswer && <p className="text-[var(--color-accent)] font-bold mt-4">Mauvaise réponse. Essayez encore !</p>}
+                    {isWrongAnswer && <p className="text-[var(--color-accent)] font-bold mt-3 sm:mt-4">Mauvaise réponse. Essayez encore !</p>}
                 </motion.div>
                 )}
 

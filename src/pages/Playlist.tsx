@@ -132,10 +132,10 @@ export default function Playlist() {
 };
 
   return (
-    <div className="container max-w-full mx-auto px-6">
+    <div className="container max-w-full mx-auto px-6 flex flex-col h-full">
       {/* Current Song */}
       {currentSong && (
-        <div className="bg-[var(--color-accent)] rounded-xl p-6 mb-4 flex justify-between items-center">
+        <div className="bg-[var(--color-accent)] rounded-xl p-6 mb-4 flex justify-between items-center sticky top-0 z-10">
           <div>
             <h2 className="text-white text-xl font-bold">{currentSong.title}</h2>
             <p className="text-white/80 font-regular">{currentSong.artist}</p>
@@ -190,7 +190,7 @@ export default function Playlist() {
       )}
 
       {/* Song List */}
-      <div className="space-y-2 max-h-[calc(100vh-300px)] overflow-y-auto">
+      <div className="space-y-2 overflow-y-auto flex-1">
         <AnimatePresence>
           {songs.map((song) => (
             <motion.div key={song._id} layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="bg-[var(--color-background)] backdrop-blur-sm rounded-xl px-6 py-3 flex justify-between items-center">
