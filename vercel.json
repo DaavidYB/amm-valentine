@@ -9,7 +9,16 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/server/server.js" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/server/server.js" }
+  ],
+  "routes": [
+    { 
+      "src": "^/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "^/(?!api).*",
+      "dest": "/index.html"
+    }
   ]
 }
