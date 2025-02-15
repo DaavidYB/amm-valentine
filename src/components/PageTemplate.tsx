@@ -5,7 +5,6 @@ interface PageTemplateProps {
     children: React.ReactNode;
     className?: string;
 }
-
 function PageTemplate({ children, className = "" }: PageTemplateProps) {
     return (
         <div className="min-h-[100svh] h-[100dvh] flex flex-col" 
