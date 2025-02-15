@@ -60,6 +60,7 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
     if (currentSong && !audioRef.current) {
       // Create the audio element only once and set its source
       audioRef.current = new Audio(currentSong.url)
+      audioRef.current.volume = 0.5;
       audioRef.current.addEventListener("ended", handleSongEnd)
 
       // Play the song immediately
