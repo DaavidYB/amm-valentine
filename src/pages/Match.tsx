@@ -130,13 +130,13 @@ function Match() {
                             exit={{ opacity: 0, y: -20 }}
                             className="text-center px-2 sm:px-4"
                         >
-                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--color-accent)] mb-2 sm:mb-4">
+                            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-accent)] mb-2 sm:mb-4">
                                 Ton match est
                             </h2>
-                            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--color-accent)] mb-2">
+                            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-accent)] mb-3 sm:mb-4">
                                 {matchResult.name}
                             </div>
-                            <p className="text-sm sm:text-base text-[var(--color-accent)]/70">
+                            <p className="text-base sm:text-lg md:text-xl text-[var(--color-accent)]/70">
                                 Compatibilité : {matchResult.compatibility}
                             </p>
                         </motion.div>
