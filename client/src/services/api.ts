@@ -19,7 +19,7 @@ export const getMatch = async (userId: string, mode: "love" | "anti-love"): Prom
 //     return response.json();
 // };
 export const fetchSongs = async (mode: "love" | "anti-love", userId: string) => {
-    const response = await fetch(`/api/playlist/${mode}?userId=${userId}`);
+    const response = await fetch(`${API_URL}/api/playlist/${mode}?userId=${userId}`);
     return response.json();
 };
 
