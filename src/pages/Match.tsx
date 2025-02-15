@@ -108,7 +108,7 @@ function Match() {
                                     <button
                                         key={option}
                                         onClick={() => handleAnswer(index)}
-                                        className="w-[95%] sm:w-[85%] p-2 sm:p-3 md:p-4 
+                                        className="w-[95%] sm:w-[85%] py-3 sm:py-4 md:py-5 px-2 sm:px-3 md:px-4
                                             rounded-xl sm:rounded-2xl 
                                             bg-[var(--color-primary)] text-[var(--color-accent)]
                                             hover:bg-[var(--color-accent)] hover:text-white 
