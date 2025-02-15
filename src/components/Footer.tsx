@@ -7,6 +7,7 @@ function Footer() {
     const navigate = useNavigate();
     const currentPath = location.pathname;
 
+    
     return (
         <footer className="flex justify-between items-center align-center w-screen px-6 py-6 z-50">
             {currentPath === '/' && (
