@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import dessinImage from '../assets/dessin.svg';
 
 const ImageComponent = () => {
     const navigate = useNavigate();
 
     return (
         <div className="relative">
-            <img src="../src/assets/dessin.svg" alt="Dessin" className="image w-136 h-auto" />
+            <img src={dessinImage} alt="Dessin" className="image w-136 h-auto" />
             <div 
                 className="absolute w-7 h-7 bg-white opacity-60 rounded-full cursor-pointer"
                 style={{ top: '10%', left: '30%' }}

@@ -1,5 +1,6 @@
 import MusicPlayer from './MusicPlayer';
 import { useLocation, useNavigate } from 'react-router-dom';
+import dessinMusique from '../assets/dessin_musique.svg';
 
 function Footer() {
     const location = useLocation();
@@ -12,7 +13,7 @@ function Footer() {
                 <>
                     <MusicPlayer mode="love" userId={"123"} />
                     <div className="relative">
-                        <img src="../src/assets/dessin_musique.svg" alt="Musique" className="w-24 h-auto" />
+                        <img src={dessinMusique} alt="Musique" className="w-24 h-auto" />
                         <div 
                             className="absolute w-7 h-7 bg-white opacity-70 rounded-full cursor-pointer"
                             style={{ top: '35%', left: '35%' }}
