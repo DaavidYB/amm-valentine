@@ -71,7 +71,7 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
       }
       
       audioRef.current = new Audio(currentSong.url);
-      audioRef.current.volume = 0.5;
+      audioRef.current.volume = 0.2; // Reduced volume to 20%
       audioRef.current.addEventListener("ended", handleSongEnd);
 
       // Only play if isPlaying is true
