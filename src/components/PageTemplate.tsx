@@ -8,12 +8,10 @@ interface PageTemplateProps {
 
 function PageTemplate({ children, className = "" }: PageTemplateProps) {
     return (
-        <div className="h-[100dvh] flex flex-col overflow-hidden">
+        <div className="min-h-screen flex flex-col">
             <Header />
-            <main className={`flex-1 flex items-center justify-center overflow-hidden ${className}`}>
-                <div className="w-full h-full flex items-center justify-center">
-                    {children}
-                </div>
+            <main className={`flex-1 flex items-center justify-center ${className}`}>
+                {children}
             </main>
             <Footer />
         </div>
