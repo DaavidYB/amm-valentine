@@ -6,17 +6,14 @@
       "use": "@vercel/node"
     },
     {
-      "src": "dist/**/*",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/server/server.js"
-    },
-    {
-      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
