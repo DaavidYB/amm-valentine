@@ -5,8 +5,12 @@ const ImageComponent = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="relative">
-            <img src={dessinImage} alt="Dessin" className="image w-136 h-auto" />
+        <div className="relative w-full max-w-138 mx-auto">
+            <img 
+                src={dessinImage} 
+                alt="Dessin" 
+                className="w-full h-auto max-w-full object-contain" 
+            />
             <div 
                 className="absolute w-7 h-7 bg-white opacity-60 rounded-full cursor-pointer"
                 style={{ top: '10%', left: '30%' }}
