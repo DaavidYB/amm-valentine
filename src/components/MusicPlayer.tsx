@@ -133,9 +133,6 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
         <div
           className="relative group cursor-pointer bg-[var(--color-accent)] hover:bg-[var(--color-hover)] transition-colors duration-300 rounded-[16px] pr-4 pl-6 py-3"
           onClick={togglePlay}
-          style={{
-            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-          }}
         >
           <div className="flex items-center justify-between min-w-[184px]">
             <div className="flex flex-col leading-tight">
