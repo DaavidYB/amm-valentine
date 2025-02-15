@@ -18,7 +18,7 @@ interface MusicPlayerProps {
 }
 
 export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
-  const [isPlaying, setIsPlaying] = React.useState(true)  // Start with playing
+  const [isPlaying, setIsPlaying] = React.useState(false)  // Start paused
   const [songs, setSongs] = React.useState<Song[]>([])
   const [currentSong, setCurrentSong] = React.useState<Song | null>(null)
   const audioRef = React.useRef<HTMLAudioElement | null>(null)  // Reference to the audio element
@@ -27,10 +27,16 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
   // Charger la playlist au début
   React.useEffect(() => {
     const loadPlaylist = async () => {
-      const songsData = await fetchSongs(mode, userId) // Récupérer les chansons depuis l'API
-      setSongs(songsData)
-      const randomSong = songsData[Math.floor(Math.random() * songsData.length)] // Sélectionner une chanson au hasard
-      setCurrentSong(randomSong)
+      try {
+        const songsData = await fetchSongs(mode, userId) // Récupérer les chansons depuis l'API
+        setSongs(songsData)
+        if (songsData.length > 0) {
+          const randomSong = songsData[Math.floor(Math.random() * songsData.length)] // Sélectionner une chanson au hasard
+          setCurrentSong(randomSong)
+        }
+      } catch (error) {
+        console.error('Error loading playlist:', error)
+      }
     }
     loadPlaylist()
   }, [mode, userId])
@@ -55,18 +61,26 @@ export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
     }
   }
 
-  // Set up the audio player and ensure it plays immediately when the song changes
+  // Set up the audio player when the song changes
   React.useEffect(() => {
-    if (currentSong && !audioRef.current) {
-      // Create the audio element only once and set its source
-      audioRef.current = new Audio(currentSong.url)
+    if (currentSong) {
+      // Create new audio element and set its source
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.removeEventListener("ended", handleSongEnd);
+      }
+      
+      audioRef.current = new Audio(currentSong.url);
       audioRef.current.volume = 0.5;
-      audioRef.current.addEventListener("ended", handleSongEnd)
+      audioRef.current.addEventListener("ended", handleSongEnd);
 
-      // Play the song immediately
-      audioRef.current.play().catch(error => {
-        console.error("Error starting the audio", error)
-      })
+      // Only play if isPlaying is true
+      if (isPlaying) {
+        audioRef.current.play().catch(error => {
+          console.error("Error starting the audio", error);
+          setIsPlaying(false); // Reset playing state if autoplay fails
+        });
+      }
     }
 
     return () => {
