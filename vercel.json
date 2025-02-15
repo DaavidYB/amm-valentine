@@ -1,24 +1,28 @@
 {
   "version": 2,
   "buildCommand": "pnpm run build",
-  "outputDirectory": "dist",
   "builds": [
     {
       "src": "server/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "dist/index.html",
+      "use": "@vercel/static"
     }
-  ],
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/server/server.js" }
   ],
   "routes": [
     { 
-      "src": "^/assets/(.*)",
-      "dest": "/assets/$1"
+      "src": "/api/(.*)", 
+      "dest": "/server/server.js" 
     },
     {
-      "src": "^/(?!api).*",
-      "dest": "/index.html"
+      "src": "/assets/(.*)",
+      "dest": "/dist/assets/$1"
+    },
+    {
+      "src": "^(?!/api).*",
+      "dest": "/dist/index.html"
     }
   ]
 }
