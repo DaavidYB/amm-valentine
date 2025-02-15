@@ -18,7 +18,7 @@ interface MusicPlayerProps {
 }
 
 export default function MusicPlayer({ mode, userId }: MusicPlayerProps) {
-  const [isPlaying, setIsPlaying] = React.useState(false)  // Start paused
+  const [isPlaying, setIsPlaying] = React.useState(true)  // Start paused
   const [songs, setSongs] = React.useState<Song[]>([])
   const [currentSong, setCurrentSong] = React.useState<Song | null>(null)
   const audioRef = React.useRef<HTMLAudioElement | null>(null)  // Reference to the audio element
