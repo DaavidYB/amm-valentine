@@ -9,12 +9,11 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "pnpm install --no-frozen-lockfile && pnpm run build",
+        "buildCommand": "npm install && npm run build",
         "outputDirectory": "dist"
       }
     }
   ],
-  "installCommand": "pnpm install --no-frozen-lockfile",
   "routes": [
     {
       "src": "/api/(.*)",
