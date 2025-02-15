@@ -8,15 +8,7 @@ const app = express();
 // Middleware pour logger toutes les requêtes
 app.use(async (req, res, next) => {
     console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
-    
-    // Connexion à MongoDB pour chaque requête
-    try {
-        await connectDB();
-        next();
-    } catch (error) {
-        console.error('Erreur de connexion MongoDB:', error);
-        res.status(500).json({ error: 'Database connection failed' });
-    }
+    next();
 });
 
 app.use(cors());
