@@ -43,6 +43,9 @@ function Header() {
                             <li className="font-regular">Sélectionne ton mode</li>
                             <li className="font-regular">Participe aux jeux et amuse-toi !</li>
                         </ul>
+                        <p className="text-sm italic mt-4 text-[var(--color-accent)]/80">
+                            Pour une meilleure expérience, nous recommandons d'utiliser un ordinateur.
+                        </p>
                     </div>
                 </DialogContent>
             </Dialog>

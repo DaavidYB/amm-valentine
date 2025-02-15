@@ -46,11 +46,13 @@ export default function SecretValentine() {
 
   const getRandomPosition = useMemo(() => {
     return () => {
-      if (!containerRef.current) return { x: 0, y: 0 }
+      if (!containerRef.current) return { x: 50, y: 50 }
       const { width, height } = containerRef.current.getBoundingClientRect()
+  
+      const safeMargin = 120 // Évite d'apparaître en dehors de l'écran
       return {
-        x: Math.random() * width,
-        y: Math.random() * height,
+        x: Math.random() * (width - safeMargin * 2) + safeMargin,
+        y: Math.random() * (height - safeMargin * 2) + safeMargin,
       }
     }
   }, [])
