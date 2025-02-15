@@ -57,8 +57,12 @@ function Match() {
     };
 
     return (
-        <div className="px-6 w-full flex justify-center">
-            <div className="bg-[var(--color-background)] backdrop-blur-sm rounded-3xl p-8 max-w-[500px] w-full sm:w-[90%] md:w-[500px] h-[500px] flex flex-col items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center p-2 sm:p-4">
+            <div className="bg-[var(--color-background)] backdrop-blur-sm rounded-2xl sm:rounded-3xl 
+                p-3 sm:p-6
+                w-[min(90vw,500px)] h-[min(90vw,500px)]
+                flex flex-col items-center justify-center
+                overflow-y-auto">
                 <AnimatePresence mode="wait">
                     {step === "welcome" && (
                         <motion.div
